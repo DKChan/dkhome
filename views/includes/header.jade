@@ -1,0 +1,16 @@
+nav.header.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+        .navbar-header
+            a.navbar-brand(href="/") DK
+        .collapse.navbar-collapse
+            ul.nav.navbar-nav
+                for item in nav_list
+                    li: a(href="#{item.href}") #{item.name}
+                //- li: a(href="javascript:void(0);") Test
+                //- li: a(href="javascript:void(0);") Test2
+            ul.nav.navbar-nav.navbar-right
+                li#login
+                    - if(now_state === 'login')
+                        a(href="javascript:void(0);" data-target="#login-dialog" data-toggle="modal") #{now_state}
+                    - else
+                        a(href="/logout") #{now_state}

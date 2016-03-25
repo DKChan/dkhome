@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    include includes/header
+    .frosted-glass.banner-img-container
+        img(src='../images/bk.jpg').banner-img
+    .container
+        .banner
+            h2 Welcome to DK's Home
+        .row-fruid
+            .col-md-4.content.contact-block
+                h4 Contact Me
+                .contact-list
+                    ul
+                        for item in contact
+                            li
+                                span
+                                    i.fa(class="#{item.icon}")
+                                    a(href="#{item.link}") #{item.name}
+            .col-md-7.content.message-block
+                h4 Message Box
+                .message-list
+                    ul
+                        for item in message
+                            div
+                                p= item.content
+                                span 
+                                    small date: #{item.date}
+    .modal.fade#login-dialog
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type="button" data-dismiss="modal" aria-label="Close").close
+                        span &times;
+                    h4.modal-title 回答问题 - 通过认证
+                .modal-body
+                    form#login-form(method="POST", action='/login')
+                        .form-group
+                            label(for="first-problem") where's the light
+                            input(type="text" name="user").form-control#account
+                        .form-group
+                            label(for="first-problem") ml的含义
+                            input(type="password" name="psd").form-control#passwd
+                        button.btn.btn-primary(type="submit") 提交
+                        span &nbsp;
+                        button.btn.btn-default(type="button" data-dismiss="modal") 关闭
+    script(src="/javascripts/index-common.js")

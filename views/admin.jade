@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    include includes/header
+    .container(ng-app="dk-admin" ng-controller="mainCtrl")
+        .info-alert.alert(class="alert-{{tip.type || 'info'}}" ng-show="tip.message") {{tip.message}}
+        ul.nav.nav-tabs.nav-justified.nav-setting
+            for item in settings
+                li: a(href='#{item.href}') #{item.name}
+        div(ng-view)
+    script(src="/javascripts/admin-common.js")

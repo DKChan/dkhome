@@ -1,0 +1,41 @@
+<div class="container-fruid">
+    <div class='row-fruid' ng-controller="userformCtrl">
+        <div class="col-md-10"> 
+            <form role="form" name="user">
+                <div class="form-group">
+                    <label for="username">user</label>
+                    <input class="form-control" type="text" ng-maxlength="20", ng-minlength="6" require ng-model="user_username">
+                </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input class="form-control" type="password" ng-maxlength="20", ng-minlength="6" require ng-model="user_passwd">
+                </div>
+                <div class="form-group">
+                    <label for="username">permission</label>
+                    <input class="form-control" type="number" min="0" max="100" ng-model="user_permission">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2 setting-element">
+            <button ng-click="adduser(user.$valid)" class="btn btn-block btn-success add-btn" >add user</button>
+        </div>
+    </div>
+    <div class='row-fruid'>
+        <table class="col-md-12 table table-striped table-hover setting-element">
+            <tr>
+                <th>user name</th>
+                <th>permission</th>
+                <th>last login</th>
+                <th>delete</th>
+            </tr>
+            <tr ng-repeat="x in users">
+                <td>{{x.username}}</td>
+                <td>{{x.permission}}</td>
+                <td>{{x.create_at}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="delUser(x._id)">delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

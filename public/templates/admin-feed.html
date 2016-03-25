@@ -1,0 +1,31 @@
+<div class="container-fruid">
+    <div class='row-fruid' ng-controller="feedformCtrl">
+        <div class="col-md-10">
+            <form role="form" name="feed">
+                <div class="form-group">
+                    <label for="username">content</label>
+                    <textarea class="form-control" type="text" ng-maxlength="200", ng-minlength="6" require ng-model="feed_content"></textarea> 
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2 setting-element">
+            <button ng-click="addfeed(feed.$valid)" class="btn btn-block btn-success add-btn">new feed</button>
+        </div>
+    </div>
+    <div class='row-fruid'>
+        <table class="col-md-12 table table-striped table-hover setting-element">
+            <tr>
+                <th>content</th>
+                <th>date</th>
+                <th>delete</th>
+            </tr>
+            <tr ng-repeat="x in feeds">
+                <td>{{x.content}}</td>
+                <td>{{x.create_at}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="delFeed(x._id)">delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
